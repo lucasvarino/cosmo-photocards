@@ -54,7 +54,7 @@ export async function fetchObjektsForOwner({
   pageKey,
 }: ObjektRequest): Promise<ObjektResponse> {
   const ALCHEMY_KEY = process.env.ALCHEMY_KEY;
-  const endpoint = `curl 'https://eth-mainnet.g.alchemy.com/v2/${ALCHEMY_KEY}/getNFTs/`;
+  const endpoint = `https://eth-mainnet.g.alchemy.com/v2/${ALCHEMY_KEY}/getNFTs/`;
   const params = new URLSearchParams({
     owner: address,
     withMetadata: "true",
