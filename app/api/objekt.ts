@@ -1,3 +1,5 @@
+import { fetchObjektsForOwner } from "@/lib/objekts";
+
 const REGEX = /4x$/i;
 
 const CONTRACTS = [
@@ -9,3 +11,32 @@ const collectionMap: Record<string, "physical" | "digital"> = {
   A: "physical",
   Z: "digital",
 };
+
+type Objekt = {
+  frontImage: string;
+  backImage: string;
+  className: string;
+  memberName: string;
+  season: string;
+  collection: string;
+  type: "physical" | "digital";
+  num: number;
+  tokenId: number;
+  acquiredAt: number;
+  transferable: boolean;
+  key: string;
+};
+
+export async function fetchObjekt(
+  address: string,
+  pageKey: string | null
+): Promise<Objekt> {
+  try {
+    const response = await fetchObjektsForOwner({
+      address,
+      contracts: CONTRACTS,
+      orderBy: 'transferTime',
+      pageKey: pageKey ?? "",
+    });
+  }
+}
