@@ -38,5 +38,7 @@ export async function fetchObjekt(
       orderBy: 'transferTime',
       pageKey: pageKey ?? "",
     });
+
+    const mappedObjekts = response.ownedNfts.filter((objekt) => objekt.raw?.metadata?.objekt != undefined)
   }
 }
